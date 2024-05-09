@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="icon" href="/static/favicon.ico">
+
+    <title>Error Page</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0 20px; /* 添加左右边距 */
+            box-sizing: border-box;
+        }
+
+        .message {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center; /* 文字居中 */
+        }
+
+        .emoji {
+            font-size: 80px;
+        }
+    </style>
+    <script>
+        let isError = false;
+
+            {{#isError}}
+            isError = true;
+            {{/isError}}
+        function randomEmoji() {
+            let emojis = ['😀', '😁', '😊', '😝', '😘'];
+            if (isError) {
+                emojis = ['😞', '😔', '😢', '😭', '😩', '😐', '😑', '😶'];
+            }
+            const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+            document.getElementById("emoji").innerText = emoji;
+        }
+    </script>
+</head>
+<body onload="randomEmoji()">
+<div class="container">
+    <div class="message">
+        {{#message}}
+            <span>{{message}}</span>
+        {{/message}}
+    </div>
+    <div class="emoji" id="emoji"></div>
+</div>
+</body>
+</html>

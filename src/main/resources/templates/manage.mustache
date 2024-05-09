@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mokugyo</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="icon" href="/static/favicon.ico">
+
+    <style>
+
+        td {
+            max-width: 200px;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        textarea {
+            max-width: 400px;
+        }
+    </style>
+
+</head>
+
+<body style="grid-template-columns:none;display: block;margin-left: 300px;margin-top: 100px;">
+
+{{^isLoggedIn}}
+    <div>
+        <h1>登录</h1>
+        <form id="loginForm" action="/api/login" method="post">
+            <div class="form-input">
+                <label for="username">用户名:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-input">
+                <label for="password">密码:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div style="height: 6px"></div>
+            <div class="form-actions">
+                <button type="submit" id="loginButton">&nbsp;登录&nbsp;</button>
+
+            </div>
+        </form>
+    </div>
+{{/isLoggedIn}}
+
+{{#isLoggedIn}}
+    {{#user}}
+        <div>
+            <h1>更新</h1>
+            <form action="/api/user/save" method="post">
+                <div>
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id" value=" {{#id}}{{id}}{{/id}}" readonly>
+                </div>
+
+                <div>
+                    <label for="to">To:</label>
+                    <input type="text" id="to" name="to" value="{{#to}}{{to}}{{/to}}">
+                </div>
+                <div>
+                    <label for="from">From:</label>
+                    <input type="text" id="from" name="from" value="{{#from}}{{from}}{{/from}}">
+                </div>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message">{{#message}}{{message}}{{/message}}</textarea>
+                </div>
+                <div>
+                    <label for="count">Count:</label>
+                    <input type="text" id="count" name="count" value="{{#count}}{{count}}{{/count}}">
+                </div>
+                <div>
+                    <label for="enable">Enable:</label>
+                    <input type="checkbox" id="enable" name="enable" {{#enable}}checked{{/enable}}>
+                </div>
+                <div>
+                    <label for="startDateTime">Start Date Time:</label>
+                    <input type="datetime-local" id="startDateTime" name="startDateTime"
+                           value="{{#startDateTime}}{{startDateTime}}{{/startDateTime}}{{^startDateTime}}{{/startDateTime}}">
+                </div>
+                {{#createdAt}}
+                    <div>
+                        <label for="createdAt">Created At:</label>
+                        <input type="text" id="createdAt" name="createdAt" value="{{createdAt}}" readonly disabled>
+                    </div>
+                {{/createdAt}}
+                {{#updatedAt}}
+                    <div>
+                        <label for="updatedAt">Updated At:</label>
+                        <input type="text" id="updatedAt" name="updatedAt" value="{{updatedAt}}" readonly disabled>
+                    </div>
+                {{/updatedAt}}
+                <div>
+                    <button type="submit">Submit</button>
+                    <a href="/page/manage">&nbsp;取消&nbsp;</a>
+
+                </div>
+            </form>
+        </div>
+    {{/user}}
+    {{^user}}
+        <div>
+            <h1>创建</h1>
+
+            <form action="/api/user/save" method="post">
+                <div>
+                    <label for="to">To:</label>
+                    <input type="text" id="to" name="to">
+                </div>
+                <div>
+                    <label for="from">From:</label>
+                    <input type="text" id="from" name="from">
+                </div>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <div>
+                    <label for="count">Count:</label>
+                    <input type="text" id="count" name="count" value="0">
+                </div>
+                <div>
+                    <label for="enable">Enable:</label>
+                    <input type="checkbox" id="enable" name="enable" checked>
+                </div>
+                <div>
+                    <label for="startDateTime">Start Date Time:</label>
+                    <input type="datetime-local" id="startDateTime" name="startDateTime" value="{{#now}}{{/now}}">
+                </div>
+
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    {{/user}}
+
+
+    <div>
+        <h1>用户表</h1>
+        <a href="/api/logout">退出</a>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>to</th>
+                <th>from</th>
+                <th>message</th>
+                <th>enable</th>
+                <th>count</th>
+                <th>autoCount</th>
+                <th>startDateTime</th>
+                <th>createdAt</th>
+                <th>updatedAt</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#users}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{to}}</td>
+                    <td>{{from}}</td>
+                    <td>{{message}}</td>
+                    <td>{{enable}}</td>
+                    <td>{{count}}</td>
+                    <td>{{autoCount}}</td>
+                    <td>{{startDateTime}}</td>
+                    <td>{{createdAt}}</td>
+                    <td>{{updatedAt}}</td>
+                    <td>
+                        <a href="/page/manage?userId={{id}}">编辑</a>
+                        <a href="/api/user/{{id}}/delete">删除</a>
+                        <a href="/pre/to/{{to}}">预览</a>
+                    </td>
+                </tr>
+            {{/users}}
+            </tbody>
+        </table>
+    </div>
+
+{{/isLoggedIn}}
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)https://fish.leixf.cn/ -->
+<html lang="en" style="font-size: 100px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="/static/favicon.ico">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>@{{user.to}}的木鱼</title>
+    <meta name="keywords" content="电子木鱼,自动功德机,机甲佛祖,赛博真经,功德+1">
+    <meta name="description"
+          content="敲电子木鱼，使用自动功德机，见机甲佛祖，修赛博真经。无需登录即可每日敲木鱼，每敲一下功德+1，心中的焦虑似乎也减少了呢。">
+    <script type="text/javascript" charset="UTF-8" async="" src="/static/javascript/js-sdk-pro.min.js"
+            id="LA_COLLECT"></script>
+    <script src="/static/javascript/howler.min.js"></script>
+    <script src="/static/javascript/main.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        /* 基础按钮样式 */
+        .button {
+            background-color: #e8e8e8; /* 白色背景 */
+            color: black; /* 文字颜色 */
+            border: none; /* 无边框 */
+            padding: 6px 12px; /* 内边距 */
+            text-align: center; /* 文字居中 */
+            text-decoration: none; /* 无文本装饰 */
+            display: inline-block; /* 行内块显示 */
+            font-size: 12px; /* 字体大小 */
+            margin: 4px 2px; /* 外边距 */
+            cursor: pointer; /* 鼠标指针变成手指形状 */
+            border-radius: 2px; /* 边框圆角 */
+            transition: box-shadow 0.3s; /* 过渡效果 */
+        }
+
+        /* 鼠标悬停时的样式 */
+        .button:hover {
+            box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.6); /* 发光效果 */
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    const preCount = d({{user.count}}, 0);
+    const preAutoCount = d({{user.autoCount}}, 0);
+    const to = d("{{user.to}}", "你的");
+    const id = d({{user.id}}, -1);
+
+    function d(variable, dafeult) {
+        if (variable != null) {
+            return variable;
+        }
+        return dafeult;
+    }
+
+    function jump(url) {
+        window.open(url, '_blank');
+    }
+</script>
+</body>
+
+<div class="centerContent">
+    <div id="top">
+        <div class="logo">
+            <div class="text">{{user.to}}的木鱼</div>
+        </div>
+        <div style="height: 36px"></div>
+        <div class="score">
+            <div class="count" style="transform: scale(1);">0</div>
+            <div class="subtitle">功德</div>
+        </div>
+    </div>
+    <div id="center">
+        <svg class="woodenFish" width="157pt" height="126pt" viewBox="0 0 247 197" version="1.1"
+             xmlns="http://www.w3.org/2000/svg" style="transform: scale(1);">
+            <g id="#eeeeeeff">
+                <path fill="#eeeeee" opacity="1.00"
+                      d=" M 109.12 6.53 C 124.09 4.27 139.37 2.82 154.47 4.79 C 173.07 7.14 191.38 14.02 206.02 25.89 C 217.01 34.77 225.17 46.63 231.55 59.13 C 237.81 72.25 241.16 86.53 243.92 100.74 C 225.49 104.75 206.58 105.76 187.77 106.20 C 186.21 100.02 183.12 93.94 177.74 90.25 C 172.00 85.96 163.98 84.19 157.26 87.18 C 145.99 91.69 139.62 105.22 142.63 116.85 C 145.12 127.39 154.97 136.11 166.05 135.69 C 176.18 134.97 184.61 126.81 187.19 117.22 C 192.74 116.73 198.32 116.63 203.89 116.32 C 217.57 115.26 231.14 113.14 244.82 111.98 C 245.52 121.28 246.13 130.75 244.11 139.94 C 242.32 149.02 239.23 158.07 233.39 165.39 C 224.88 176.55 212.15 183.64 199.01 187.98 C 187.42 191.86 175.20 193.41 163.05 194.29 C 140.40 195.87 117.64 195.62 94.99 194.19 C 74.79 192.81 54.55 190.78 34.79 186.17 C 27.91 184.54 21.07 182.47 14.77 179.21 C 8.58 175.93 4.23 169.71 2.72 162.92 C -0.48 151.41 3.00 139.09 9.20 129.21 C 14.61 119.75 27.61 116.88 30.81 105.83 C 35.50 90.01 37.28 73.40 42.87 57.82 C 47.56 45.36 54.34 33.26 64.82 24.75 C 77.25 14.19 93.24 9.04 109.12 6.53 Z"></path>
+            </g>
+        </svg>
+    </div>
+    <div id="bottom">
+        <div class="tips">
+            正在为 @{{user.to}} 积攒功德.
+        </div>
+        <div class="tips">
+            {{user.message}}
+        </div>
+        <div class="tips">
+            <span id="jinrishici-sentence">....</span>
+        </div>
+        <div style="height: 24px"></div>
+        <button class="button" onclick="jump('/contract_me')">我想赠与木鱼</button>
+        <div style="height: 24px"></div>
+
+        <div class="leftRight">
+            <div class="left">敲电子木鱼, 积赛博功德.</div>
+            <div class="right">
+                <div class="text">By @{{user.from}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
