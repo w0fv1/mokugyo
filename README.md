@@ -42,3 +42,7 @@ java -jar build/libs/mokugyo.jar
 而在`http://localhost:36688/page/manage`中, 你可以管理所有的木鱼.
 
 注意, mokugyo会在`~/`目录下创建数据库文件, 如果你使用root用户运行, 请注意权限问题.
+
+# 信息
+
+1. 木鱼页面是借用了[@Lei钟意](https://leixf.cn/)的[木鱼](https://fish.leixf.cn/), 做出了一些调整. 已经取得作者授权.
