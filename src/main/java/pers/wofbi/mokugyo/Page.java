@@ -81,7 +81,10 @@ public class Page {
 
     @GetMapping("/contract_me")
     public String contractMe(Model model, HttpSession session) {
-        model.addAttribute("message", "联系我:w0fv1.dev@gmail.com");
+        model.addAttribute("message",
+                "联系我:\n" +
+                "微信号:w0fbi1\n"+
+                "主页:w0fv1.dev");
         return "message";
     }
 

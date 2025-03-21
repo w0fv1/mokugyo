@@ -85,9 +85,11 @@ body {
 }
 
 .score .subtitle {
-  font-size: 0.5rem;
-  color: #444;
-  line-height: 0.7rem;
+  font-size: 0.35rem;
+  color: #ccc;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.2rem;
 }
 
 #center {

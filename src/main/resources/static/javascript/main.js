@@ -82,6 +82,20 @@ window.onload = () => {
         countFlag = true;
         count++;
         countElement.innerHTML = String(count);
+
+        function getRank(count) {
+            if (count < 1000) return "初敲木鱼，愿心安宁，吉祥常伴";
+            if (count < 10000) return "功德初成，愿诸事顺遂，烦恼渐消";
+            if (count < 50000) return "心有禅意，愿你喜乐无忧，平安如意";
+            if (count < 100000) return "功德日增，愿光明遍照，福慧双增";
+            if (count < 500000) return "念念敲响，愿你所愿皆成，无苦无忧";
+            if (count < 1000000) return "禅心渐显，愿你心境澄明，岁岁安康";
+            return "悟道之人，愿你福泽万千，光照十方";
+        }
+
+        const rankDesc = getRank(count);
+        document.querySelector(".subtitle").innerText = rankDesc;
+
         startAnimate();
         if (ringId !== 0) {
             if (sound.playing()) {
@@ -187,3 +201,5 @@ window.onload = () => {
         }, 200);
     }, 1000);
 }
+
+
